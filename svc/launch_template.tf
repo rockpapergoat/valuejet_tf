@@ -29,7 +29,7 @@ resource "aws_launch_template" "this" {
   instance_type = var.instance_type
 
   metadata_options {
-    instance_metadata_tags      = var.instance_metadata_tags
+    instance_metadata_tags = var.instance_metadata_tags
   }
 
   monitoring {
