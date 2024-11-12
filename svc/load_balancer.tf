@@ -1,3 +1,3 @@
-resource "aws_lb" "this" {
+resource "aws_lb" "svc" {
 
 }

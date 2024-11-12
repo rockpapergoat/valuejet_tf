@@ -3,16 +3,37 @@ variable "service_name" {
   type        = string
 }
 
-variable "ports" {
-  description = "port or ports service listens on"
-  type        = list(number)
+variable "sg_in" {
+  description = "map of port(s) and protocols to configure ingress security group rules"
+  type        = map(any)
+  default = {
+    ssh = {
+      protocol  = "tcp"
+      from_port = 22
+      to_port   = 22
+      cidr      = "10.140.0.0/22"
+    }
+  }
 }
 
+variable "sg_out" {
+  description = "map of port(s) and protocols to configure egress security group rules"
+  type        = map(any)
+  default = {
+    ssh = {
+      protocol  = "tcp"
+      from_port = 22
+      to_port   = 22
+      cidr      = "10.140.0.0/22"
+    }
+  }
+}
 variable "role" {
   description = "puppet role to assign to this host"
   type        = string
 }
 
+# asg variables
 variable "disk_size" {
   description = "vulume size in GB for EBS disk"
   type        = number
@@ -144,3 +165,14 @@ variable "asg_count" {
   default     = 0
 }
 
+# security group vars
+
+variable "sg_description" {
+  description = "describe the security group for this service"
+  type        = string
+}
+
+variable "vpc_id" {
+  description = "the vpc id. use a data lookup, global vars, or remote state lookup to reference this."
+  type        = string
+}

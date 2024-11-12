@@ -1,3 +1,3 @@
-resource "aws_route53_record" "this" {
+resource "aws_route53_record" "svc" {
 
 }

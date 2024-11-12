@@ -1,4 +1,4 @@
-resource "aws_launch_template" "svc" {
+resource "aws_launch_template" "this" {
   name = "${var.service_name}_template"
 
   block_device_mappings {
